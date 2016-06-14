@@ -49,6 +49,10 @@ Run python migrations::
 
     docker-compose run app python manage.py migrate
 
+Create yourself a superuser::
+
+    docker-compose run app python manage.py createsuperuser --email=admin@example.com --first_name=Admin --last_name=User
+
 Up the container::
 
     docker-compose up
