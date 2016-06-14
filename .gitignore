@@ -1,0 +1,5 @@
+node_modules
+.idea
+db.sqlite3
+**__pycache__**
+app/local_settings.py

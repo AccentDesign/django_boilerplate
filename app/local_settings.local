@@ -1,0 +1,20 @@
+import os
+
+from .settings import *
+
+DEBUG = True
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+AUTH_PASSWORD_VALIDATORS = []
+
+mailcatcher_addr = os.environ.get('MAILCATCHER_PORT_1025_TCP_ADDR')
+mailcatcher_port = os.environ.get('MAILCATCHER_PORT_1025_TCP_PORT')
+
+EMAIL_HOST = mailcatcher_addr
+EMAIL_PORT = mailcatcher_port

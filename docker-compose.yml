@@ -1,0 +1,17 @@
+mail:
+  image: schickling/mailcatcher
+  ports:
+    - "1025:1025"
+    - "1080:1080"
+
+app:
+  build: .
+  command: python3 manage.py runserver 0.0.0.0:8000
+  volumes:
+    - .:/var/app
+  links:
+     - mail:mailcatcher
+  environment:
+     DJANGO_SETTINGS_MODULE: app.local_settings
+  ports:
+    - "8000:8000"

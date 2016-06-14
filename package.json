@@ -1,0 +1,25 @@
+{
+  "name": "django_boilerplate",
+  "version": "0.0.1",
+  "directories": {},
+  "scripts": {
+    "bs_inst": "cd static/bootstrap && npm install",
+    "bs_dist": "cd static/bootstrap && grunt dist",
+    "bs_watch": "cd static/bootstrap && grunt watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/accent/django_boilerplate.git"
+  },
+  "author": "Stuart George",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/accent/django_boilerplate/issues"
+  },
+  "homepage": "https://bitbucket.org/accent/django_boilerplate#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+  }
+}
