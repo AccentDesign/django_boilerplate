@@ -1,9 +1,45 @@
+/*
+    ---------
+    Task List
+    ---------
+
+    Name: default
+    Purpose: everything
+
+    Name: bootstrap_css
+    Purpose: build and prefix bootstrap css 
+
+    Name: bootstrap_compress
+    Purpose: minify bootstrap css 
+
+    Name: bootstrap_fonts
+    Purpose: Copies bootstrap fonts to dist folder
+
+    Name: bootstrap_js
+    Purpose: Copies bootstrap js to dist folder
+
+    Name: style_css
+    Purpose: builds and autoprefix site css
+
+    Name: style_compress
+    Purpose: minifys site css
+
+    Name: style_css_min
+    Purpose: runs style_css and style_compress
+
+    Name: style_watch
+    Purpose: watches for changes to any .scss file in any folder within the src/style 
+    directory then runs style_css_min
+
+*/
+
 var $ = require('gulp-load-plugins')();
 var gulp = require('gulp');
 var less = require('gulp-less');
 var rename = require("gulp-rename");
 var runSequence = require('run-sequence');
 var sass = require('gulp-sass');
+var watch = require('gulp-watch');
 
 var config = {
     assetsDir: './static/assets',
@@ -31,6 +67,10 @@ gulp.task('bootstrap_compress', function () {
         suffix: '.min'
     }))
     .pipe(gulp.dest(config.publicDir + '/css'));
+});
+
+gulp.task( 'bootstrap_css_min', ['bootstrap_css'], function (cb) {
+    runSequence(['bootstrap_compress'], cb );
 });
 
 gulp.task('bootstrap_fonts', function() {
@@ -63,29 +103,25 @@ gulp.task('style_compress', function () {
     .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
-gulp.task('jquery', function() {
-    return gulp.src('./node_modules/jquery/dist/**')
-    .pipe(gulp.dest(config.publicDir + '/js'));
+gulp.task( 'style_css_min', function(cb) {
+    runSequence(
+        'style_css', 
+        'style_compress', 
+        cb 
+    );
 });
 
-gulp.task('fa_fonts', function() {
-    return gulp.src('./node_modules/font-awesome/fonts/**')
-    .pipe(gulp.dest(config.publicDir + '/fonts'));
+gulp.task('style_watch', ['style_css_min'], function (){
+    gulp.watch('./static/src/style/**.scss', ['style_css_min']);
 });
 
-gulp.task('fa_css', function() {
-    return gulp.src('./node_modules/font-awesome/css/**')
-    .pipe(gulp.dest(config.publicDir + '/css'));
-});
 
-gulp.task('default', ['bootstrap_css', 'style_css', 'fa_css'], function (cb) {
+gulp.task('default', ['bootstrap_css', 'style_css'], function (cb) {
     runSequence([
         'bootstrap_compress',
         'bootstrap_fonts',
         'bootstrap_js',
-        'style_compress',
-        'fa_fonts',
-        'jquery'],
+        'style_compress'],
         cb
     );
 });
