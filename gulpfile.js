@@ -44,11 +44,12 @@ var watch = require('gulp-watch');
 var config = {
     assetsDir: './static/assets',
     bootstrapDir: './node_modules/bootstrap-sass',
-    publicDir: './static/dist'
+    publicDir: './static/dist',
+    scssDir: './static/scss'
 };
 
 gulp.task('bootstrap_css', function() {
-    return gulp.src('./static/src/bootstrap/bootstrap.scss')
+    return gulp.src(config.scssDir + '/bootstrap/bootstrap.scss')
     .pipe($.sourcemaps.init())
     .pipe(sass({
         includePaths: [config.bootstrapDir + '/assets/stylesheets']
@@ -61,7 +62,7 @@ gulp.task('bootstrap_css', function() {
 });
 
 gulp.task('bootstrap_compress', function () {
-  return gulp.src('./static/dist/css/bootstrap.css')
+  return gulp.src(config.publicDir + '/css/bootstrap.css')
     .pipe($.csso())
     .pipe($.rename({
         suffix: '.min'
@@ -84,7 +85,7 @@ gulp.task('bootstrap_js', function() {
 });
 
 gulp.task('style_css', function() {
-    return gulp.src('./static/src/style/style.scss')
+    return gulp.src(config.scssDir + '/style/style.scss')
     .pipe($.sourcemaps.init())
     .pipe(sass({}))
     .pipe($.postcss([
@@ -95,7 +96,7 @@ gulp.task('style_css', function() {
 });
 
 gulp.task('style_compress', function () {
-  return gulp.src('./static/dist/css/style.css')
+  return gulp.src(config.publicDir + '/css/style.css')
     .pipe($.csso())
     .pipe($.rename({
         suffix: '.min'
@@ -112,7 +113,7 @@ gulp.task( 'style_css_min', function(cb) {
 });
 
 gulp.task('style_watch', ['style_css_min'], function (){
-    gulp.watch('./static/src/style/**.scss', ['style_css_min']);
+    gulp.watch(config.scssDir + '/style/**.scss', ['style_css_min']);
 });
 
 
