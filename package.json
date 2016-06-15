@@ -18,8 +18,22 @@
   },
   "homepage": "https://bitbucket.org/accent/django_boilerplate#readme",
   "dependencies": {
-    "bootstrap": "^3.3.6"
+    "bootstrap-sass": "^3.3.6",
+    "font-awesome": "^4.6.3",
+    "jquery": "^1.9.0"
   },
   "devDependencies": {
+    "autoprefixer-core": "^6.0.1",
+    "gulp": "^3.9.1",
+    "gulp-csso": "^2.0.0",
+    "gulp-less": "^3.1.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.0.6",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "node-sass": "^3.7.0",
+    "run-sequence": "^1.2.1"
   }
 }
