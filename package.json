@@ -2,11 +2,7 @@
   "name": "django_boilerplate",
   "version": "0.0.1",
   "directories": {},
-  "scripts": {
-    "bs_inst": "cd static/bootstrap && npm install",
-    "bs_dist": "cd static/bootstrap && grunt dist",
-    "bs_watch": "cd static/bootstrap && grunt watch"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://bitbucket.org/accent/django_boilerplate.git"
@@ -33,6 +29,7 @@
     "gulp-ruby-sass": "^2.0.6",
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-watch": "^4.3.6",
     "node-sass": "^3.7.0",
     "run-sequence": "^1.2.1"
   }
