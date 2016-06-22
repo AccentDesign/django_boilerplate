@@ -7,8 +7,7 @@ Description
 
 Bare bones starter project complete with the following
 
-- Authentication
-- Email Templates
+- Email authentication
 - Login, password reset, password change
 - Bootstrap3
 
@@ -17,7 +16,7 @@ Getting Started
 
 1, Clone the repo::
 
-    git clone https://bitbucket.org/accent/django_boilerplate.git
+    git clone https://github.com/AccentDesign/django_boilerplate.git
 
 2, You will also need some local settings as the default's are production ready.
 
@@ -47,7 +46,7 @@ Up the container::
 Ready!!
 *******
 
-The container is ready at http://127.0.0.1:8000/ and a mail server ready at http://127.0.0.1:1080/
+The container is ready at http://<docker host ip>:8000/ and a mail server ready at http://<docker host ip>:1080/
 
 
 Styling
@@ -72,24 +71,7 @@ the ``static/dist`` folder::
 
     eg:
 
-    [09:43:21] Starting 'style_css'...
-    [09:43:21] Starting 'fa_css'...
-    [09:43:21] Finished 'fa_css' after 34 ms
-    [09:43:21] Finished 'style_css' after 107 ms
-    [09:43:21] Finished 'bootstrap_css' after 605 ms
-    [09:43:21] Starting 'default'...
-    [09:43:21] Starting 'bootstrap_compress'...
-    [09:43:21] Starting 'bootstrap_fonts'...
-    [09:43:21] Starting 'bootstrap_js'...
-    [09:43:21] Starting 'style_compress'...
-    [09:43:21] Starting 'fa_fonts'...
-    [09:43:21] Starting 'jquery'...
-    [09:43:21] Finished 'bootstrap_compress' after 257 ms
-    [09:43:21] Finished 'style_compress' after 229 ms
-    [09:43:21] Finished 'bootstrap_js' after 235 ms
-    [09:43:21] Finished 'jquery' after 232 ms
-    [09:43:21] Finished 'bootstrap_fonts' after 237 ms
-    [09:43:21] Finished 'fa_fonts' after 240 ms
+    ....
     [09:43:21] Finished 'default' after 271 ms
 
 
