@@ -1,0 +1,15 @@
+machine:
+  python:
+    version: '3.4.3'
+
+dependencies:
+  override:
+    - pip install coveralls
+    - pip install -r requirements.txt
+
+test:
+  override:
+    - make test
+  post:
+    - cp -r htmlcov $CIRCLE_ARTIFACTS
+    - coveralls

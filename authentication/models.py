@@ -56,12 +56,16 @@ class User(AbstractBaseUser, PermissionsMixin):
             'Unselect this instead of deleting accounts.'
         ),
     )
-    date_joined = models.DateTimeField(auto_now_add=True)
+    date_joined = models.DateTimeField(
+        auto_now_add=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = UserManager()
+
+    class Meta:
+        ordering = ('email', )
 
     def __str__(self):
         return self.email
