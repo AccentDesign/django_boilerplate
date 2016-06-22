@@ -1,0 +1,15 @@
+[run]
+branch = True
+source = .
+omit =
+    *local_settings.py
+    *wsgi.py
+    *manage.py
+    *migrations/*
+    *tests/*
+parallel = true
+
+[report]
+exclude_lines =
+    pragma: no cover
+    raise NotImplementedError

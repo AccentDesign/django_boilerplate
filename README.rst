@@ -2,10 +2,12 @@
 Django Boilerplate
 ******************
 
-|Build_Status|
+|Build_Status| |Coverage_Status|
 
 .. |Build_Status| image:: https://circleci.com/gh/AccentDesign/django_boilerplate.svg?style=svg
    :target: https://circleci.com/gh/AccentDesign/django_boilerplate
+.. |Coverage_Status| image:: http://img.shields.io/coveralls/AccentDesign/django_boilerplate/master.svg
+   :target: https://coveralls.io/r/AccentDesign/django_boilerplate?branch=master
 
 Description
 ***********

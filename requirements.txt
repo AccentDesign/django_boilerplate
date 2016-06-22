@@ -1,2 +1,5 @@
 django
 django-bootstrap3
+
+# test requirements
+coverage
