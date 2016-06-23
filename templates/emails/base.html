@@ -1,0 +1,51 @@
+{% load i18n %}
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <style>
+            body {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 14px;
+                line-height: 1.42857;
+                color: #333;
+                padding: 20px;
+                background: #d2d6de;
+            }
+            .header-wrap {
+                width: 100%;
+                background: #fff;
+                border-bottom: solid 1px #efefef;
+                padding: 20px;
+            }
+            .header-wrap .logo {
+                font-size: 35px;
+                font-weight: 300;
+            }
+            .content-wrap {
+                width: 100%;
+                background: #fff;
+                border-bottom: solid 1px #efefef;
+                padding: 25px;
+                color: #7b8186;
+            }
+            .footer-wrap {
+                width: 100%;
+                background: #fff;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'emails/partials/header.html' %}
+        <table class="content-wrap">
+            <tr>
+                <td>
+                    {% block content %}{% endblock %}
+                </td>
+            </tr>
+        </table>
+        {% include 'emails/partials/footer.html' %}
+    </body>
+</html>
