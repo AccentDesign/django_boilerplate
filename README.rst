@@ -69,7 +69,7 @@ you will propably need gulp and gulp-cli as global dependencies::
 
     npm install -g gulp gulp-cli
 
-3, ``static/src`` is where you set up your styles, ``static/src/boobstrap/_variables.scss`` are the boorstrap variables used.
+3, ``static/scss`` is where you set up your styles, ``static/scss/boobstrap/_boobstrap/_variables.scss`` are the boorstrap variables used.
 
 4, the ``gulpfile.js`` has a list of tasks to run, to get you started running just gulp will build, compress and repopulate
 the ``static/dist`` folder::
