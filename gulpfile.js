@@ -113,7 +113,7 @@ gulp.task( 'style_css_min', function(cb) {
 });
 
 gulp.task('style_watch', ['style_css_min'], function (){
-    gulp.watch(config.scssDir + '/style/**.scss', ['style_css_min']);
+    gulp.watch([config.scssDir + '/style/*.scss', config.scssDir + '/style/**/*.scss'], ['style_css_min']);
 });
 
 
