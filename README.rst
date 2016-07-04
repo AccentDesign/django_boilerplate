@@ -56,6 +56,16 @@ Ready!!
 The container is ready at http://<docker host ip>:8000/ and a mail server ready at http://<docker host ip>:1080/
 
 
+Testing
+*******
+
+To see the test results and coverage report run::
+
+   docker-compose run app make test
+
+The html coverage report is visible in the browser by looking at the htmlcov/index.html once the tests have run.
+
+
 Styling
 *******
 

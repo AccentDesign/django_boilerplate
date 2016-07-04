@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap3 i18n %}
+{% block page_title %}Home{% endblock %}
+{% block body_class %}{% endblock %}
+{% block base_content %}
+    <div class="container">
+        <h1>{% trans 'Home' %}</h1>
+        <ul class="list-unstyled">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">{% trans 'logout' %}</a></li>
+                <li><a href="{% url 'password_change' %}">{% trans 'password change' %}</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">{% trans 'login' %}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
