@@ -1,0 +1,4 @@
+[flake8]
+ignore = F401,F403,F405
+max-line-length = 120
+exclude = */migrations/*, node_modules, local_settings.py

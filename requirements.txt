@@ -3,3 +3,4 @@ django-bootstrap3
 
 # test requirements
 coverage
+flake8
