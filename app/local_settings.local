@@ -4,6 +4,18 @@ from .settings import *
 
 DEBUG = True
 
+def show_toolbar(request):
+    return True
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_COLLAPSED': True,
+    'SHOW_TOOLBAR_CALLBACK': 'app.local_settings.show_toolbar',
+}
+
+INSTALLED_APPS += [
+    'debug_toolbar',
+]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -18,3 +30,5 @@ mailcatcher_port = os.environ.get('MAILCATCHER_PORT_1025_TCP_PORT')
 
 EMAIL_HOST = mailcatcher_addr
 EMAIL_PORT = mailcatcher_port
+
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'

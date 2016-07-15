@@ -3,4 +3,5 @@ django-bootstrap3
 
 # test requirements
 coverage
+django-debug-toolbar
 flake8
