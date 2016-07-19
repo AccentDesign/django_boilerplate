@@ -92,4 +92,26 @@ the ``static/dist`` folder::
     [09:43:21] Finished 'default' after 271 ms
 
 
+Deployment on Elastic Beanstalk
+*******************************
 
+The file `.ebextensions/01_settings.config` contains a list of all the environment settings required for email, mysql & s3.
+
+
+The following will setup an elasticbeanstalk environment with no dedicated rds, adjust as required::
+
+2, You will need to install `awsebcli`::
+
+   pip install awsebcli
+
+http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html
+
+3, BEFORE THIS MAKE SURE EVERYTHING IS COMMITTED, run the following commands following the prompts::
+
+   eb init -i
+   eb create # optional --db if dedicated rds is required
+   eb use <environment-name>
+   eb deploy
+
+4, Step 3 will have created a `.elasticbeanstalk/config.yml` which will be ignored in your `.gitignore` file,
+please remove these ignored lines as jenkins wont know where to deploy it without them.

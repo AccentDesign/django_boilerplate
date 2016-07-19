@@ -74,10 +74,25 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('RDS_DB_NAME'),
+        'USER': os.environ.get('RDS_USERNAME'),
+        'PASSWORD': os.environ.get('RDS_PASSWORD'),
+        'HOST': os.environ.get('RDS_HOSTNAME'),
+        'PORT': os.environ.get('RDS_PORT'),
     }
 }
+
+
+# Email
+
+DEFAULT_FROM_EMAIL = 'Django <no_reply@example.com>'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
 
 
 # Authentication
@@ -129,3 +144,11 @@ STATIC_URL = "/static/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "public/media")
 MEDIA_URL = "/media/"
+
+
+# File Storage
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')

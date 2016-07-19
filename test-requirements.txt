@@ -4,5 +4,7 @@ django-bootstrap3
 # accent
 # git+https://github.com/AccentDesign/Accent_SoftDelete.git@master#egg=soft_delete
 
-# elb mysql client
-mysqlclient
+# test requirements
+coverage
+django-debug-toolbar
+flake8
