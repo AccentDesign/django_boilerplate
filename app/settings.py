@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'authentication',
 
     'bootstrap3',
+    'storages',
 ]
 
 MIDDLEWARE_CLASSES = [
