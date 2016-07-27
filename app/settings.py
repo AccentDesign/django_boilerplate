@@ -1,4 +1,5 @@
 import os
+import sys
 
 from django.core.urlresolvers import reverse_lazy
 
@@ -153,3 +154,35 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'detail': {
+            'format': (
+                '%(levelname)s %(asctime)s %(pathname)s:%(lineno)s '
+                '[%(funcName)s] %(message)s')
+        }
+    },
+    'handlers': {
+        'stdout': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'detail',
+            'stream': sys.stdout
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['stdout'],
+            'level': 'INFO',
+        },
+        '': {
+            'handlers': ['stdout'],
+            'level': 'INFO',
+        }
+    }
+}
