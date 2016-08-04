@@ -1,7 +1,7 @@
 from app.settings import *
 
 
-INSTALLED_APPS += ['tests', ]
+DEV_APPS = ['tests', ]
 
 DATABASES = {
     'default': {

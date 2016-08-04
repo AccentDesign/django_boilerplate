@@ -186,3 +186,11 @@ LOGGING = {
         }
     }
 }
+
+
+# Import local settings if they exist
+try:
+    from .local_settings import *
+    INSTALLED_APPS += DEV_APPS
+except ImportError:
+    pass
