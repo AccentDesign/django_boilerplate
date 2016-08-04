@@ -17,6 +17,7 @@ Bare bones starter project complete with the following
 - Email authentication
 - Login, password reset, password change
 - Bootstrap3
+- AWS Elastic Beanstalk basic config
 
 Getting Started
 ***************
