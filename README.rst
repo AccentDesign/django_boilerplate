@@ -116,3 +116,19 @@ http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html
 
 4, Step 3 will have created a `.elasticbeanstalk/config.yml` which will be ignored in your `.gitignore` file,
 please remove these ignored lines as jenkins wont know where to deploy it without them.
+
+
+Pycharm OSX Interpreter
+***********************
+
+Connect SOCAT to docker native::
+
+   brew install socat
+   socat TCP-LISTEN:2375,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock
+
+
+Pycharm docker API URL:
+
+   tcp://localhost:2375
+
+Leave certificates folder empty.
