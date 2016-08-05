@@ -17,7 +17,7 @@ class UserCreationFormTests(AppTestCase):
     def test_meta_model(self):
         self.assertEqual(UserCreationForm().Meta.model, User)
 
-    def test_meta_excludes(self):
+    def test_meta_fields(self):
         self.assertEqual(UserCreationForm().Meta.fields, ('email', 'first_name', 'last_name'))
 
     def test_valid_form_saves(self):
@@ -50,7 +50,7 @@ class UserChangeFormTests(AppTestCase):
     def test_meta_model(self):
         self.assertEqual(UserChangeForm().Meta.model, User)
 
-    def test_meta_excludes(self):
+    def test_meta_exclude(self):
         self.assertEqual(UserChangeForm().Meta.exclude, ('password',))
 
     def test_valid_form_saves(self):
