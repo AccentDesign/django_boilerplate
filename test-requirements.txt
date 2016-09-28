@@ -1,10 +1,5 @@
-boto
-django
-django-bootstrap3
-django-storages
-
-# accent
-# git+https://github.com/AccentDesign/Accent_SoftDelete.git@master#egg=soft_delete
+# base requirements
+-r requirements.txt
 
 # test requirements
 coverage

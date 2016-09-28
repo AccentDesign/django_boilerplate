@@ -1,17 +1,44 @@
-mail:
-  image: schickling/mailcatcher
-  ports:
-    - "1025:1025"
-    - "1080:1080"
+version: '2'
 
-app:
-  build: .
-  command: python3 manage.py runserver 0.0.0.0:8000
-  volumes:
-    - .:/var/app
-  links:
-     - mail:mailcatcher
-  environment:
-     DJANGO_SETTINGS_MODULE: app.settings
-  ports:
+services:
+  app:
+    build: .
+    env_file:
+    - docker.env
+    entrypoint: ./devserver.sh
+    volumes_from:
+    - app-datavolume
+    depends_on:
+    - db
+    - mail
+    ports:
     - "8000:8000"
+
+  mail:
+    image: mailhog/mailhog
+    expose:
+    - "1025"
+    ports:
+    - "8025:8025"
+
+  db:
+    image: postgres
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_DB=postgres
+    - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes_from:
+    - db-datavolume
+
+  app-datavolume:
+    image: busybox
+    volumes:
+    - .:/var/app
+    command: /bin/echo
+
+  db-datavolume:
+    image: busybox
+    volumes:
+    - ./.postgres:/var/lib/postgresql/data/pgdata
+    command: /bin/echo

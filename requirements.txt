@@ -6,5 +6,6 @@ django-storages
 # accent
 # git+https://github.com/AccentDesign/Accent_SoftDelete.git@master#egg=soft_delete
 
-# elb mysql client
+# postgres & mysql client
+psycopg2
 mysqlclient

@@ -38,17 +38,20 @@ Build the container::
 
     docker-compose build
 
-Run python migrations::
+Up the container, this will also run migrations for you::
 
-    docker-compose run app python manage.py migrate
+    docker-compose up
 
 Create yourself a superuser::
 
-    docker-compose run app python manage.py createsuperuser --email=admin@example.com --first_name=Admin --last_name=User
+    docker exec -it <container_name> bash
+    python manage.py createsuperuser --email=admin@example.com --first_name=Admin --last_name=User
 
-Up the container::
 
-    docker-compose up
+Run python migrations manually::
+
+    docker exec -it <container_name> bash
+    python manage.py migrate
 
 
 Ready!!
