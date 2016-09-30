@@ -3,7 +3,7 @@ FROM        python:3.4
 WORKDIR     /var/app
 
 RUN apt-get update && apt-get install -y \
-        netcat \
+        postgresql-client \
     --no-install-recommends && rm -rf /var/lib/apt/lists/
 
 COPY        requirements.txt /var/app

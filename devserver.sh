@@ -1,15 +1,12 @@
 #!/bin/bash
 
-echo "waiting for db..."
-while ! nc -w 1 -z $RDS_HOSTNAME $RDS_PORT 2>/dev/null;
-do
-  echo -n .
-  sleep 1
-done
-echo "db ready..."
+export PGPASSWORD=$RDS_PASSWORD
 
-echo "app sleeping for 10 seconds to ensure database is accepting commands before migrating..."
-sleep 10
+while ! psql --host=$RDS_HOSTNAME --port=$RDS_PORT --username=$RDS_USERNAME > /dev/null 2>&1; do
+    echo 'Waiting for connection with db...'
+    sleep 1;
+done;
+echo 'Connected to db...';
 
 python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
