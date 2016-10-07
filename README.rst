@@ -65,7 +65,8 @@ Testing
 
 To see the test results and coverage report run::
 
-   docker-compose run app make test
+   docker exec -it <container_name> bash
+   make test
 
 The html coverage report is visible in the browser by looking at the htmlcov/index.html once the tests have run.
 
