@@ -165,11 +165,13 @@ gulp.task('style_watch', ['style_css_min'], function (){
     gulp.watch([config.scssDir + '/style/*.scss', config.scssDir + '/style/**/*.scss'], ['style_css_min']);
 });
 
-gulp.task('default', ['bootstrap_css', 'style_css'], function (cb) {
+gulp.task('default', ['bootstrap4_css', 'style_css'], function (cb) {
     runSequence([
-        'bootstrap_compress',
-        'bootstrap_fonts',
-        'bootstrap_js',
+        //'bootstrap_compress',
+        //'bootstrap_fonts',
+        //'bootstrap_js',
+        'bootstrap4_compress',
+        'bootstrap4_js',
         'style_compress'],
         cb
     );

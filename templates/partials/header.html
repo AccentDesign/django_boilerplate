@@ -1,0 +1,31 @@
+{% load i18n %}
+<header class="navbar navbar-light navbar-static-top bd-navbar">
+    <div class="container">
+        <nav>
+            <div class="clearfix">
+                <button class="navbar-toggler pull-xs-right hidden-sm-up" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    ☰
+                </button>
+                <a class="navbar-brand hidden-sm-up" href="/">
+                    Home
+                </a>
+            </div>
+            <div class="collapse navbar-toggleable-xs" id="main-nav">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-item nav-link" href="/">{% trans 'Home' %}</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        {% if user.is_staff %}
+                            <li class="nav-item"><a class="nav-item nav-link" href="{% url 'admin:index' %}">{% trans 'Admin' %}</a></li>
+                        {% endif %}
+                        <li class="nav-item"><a class="nav-item nav-link" href="{% url 'password_change' %}">{% trans 'Password Change' %}</a></li>
+                        <li class="nav-item"><a class="nav-item nav-link" href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-item nav-link" href="{% url 'login' %}">{% trans 'Login' %}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
