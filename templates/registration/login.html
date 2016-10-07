@@ -4,11 +4,11 @@
 {% block body_class %}login-page{% endblock %}
 {% block base_content %}
     <div class="login-box">
-        <div class="login-logo">
+        <div class="login-logo text-center">
             <a href="/"><b>Example</b>.com</a>
         </div>
         <div class="login-box-body">
-            <p class="login-box-msg">{% trans 'Login to get started' %}</p>
+            <p class="login-box-msg text-center">{% trans 'Login to get started' %}</p>
             <form class="form" action="{{ app_path }}" method="post" id="login-form" novalidate>
                 {% csrf_token %}
                 {% bootstrap_form_errors form %}
