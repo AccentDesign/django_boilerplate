@@ -2,7 +2,7 @@
 
 export PGPASSWORD=$RDS_PASSWORD
 
-while ! psql --host=$RDS_HOSTNAME --port=$RDS_PORT --username=$RDS_USERNAME > /dev/null 2>&1; do
+while ! psql -h $RDS_HOSTNAME -d $RDS_DB_NAME -p $RDS_PORT -U $RDS_USERNAME -c "SELECT version();" > /dev/null 2>&1; do
     echo 'Waiting for connection with db...'
     sleep 1;
 done;
