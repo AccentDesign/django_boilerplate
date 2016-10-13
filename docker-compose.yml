@@ -5,7 +5,7 @@ services:
     build: .
     env_file:
     - docker.env
-    entrypoint: ./devserver.sh
+    command: ./devserver.sh
     volumes_from:
     - app-datavolume
     depends_on:
