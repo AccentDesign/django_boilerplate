@@ -1,24 +1,21 @@
 import os
 
-from .settings import (
+from .base import (
     INSTALLED_APPS,
     MIDDLEWARE_CLASSES
 )
 
 
-# build paths
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Security
 
 DEBUG = True
 
 
 # debug toolbar
-def show_toolbar(request):
-    return True
 
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_COLLAPSED': True,
-    'SHOW_TOOLBAR_CALLBACK': 'app.local_settings.show_toolbar',
+    'SHOW_TOOLBAR_CALLBACK': 'app.settings.helpers.show_toolbar',
 }
 
 INSTALLED_APPS += ['debug_toolbar', ]
@@ -27,6 +24,7 @@ MIDDLEWARE_CLASSES += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
 
 
 # database
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -40,8 +38,10 @@ DATABASES = {
 
 
 # auth
+
 AUTH_PASSWORD_VALIDATORS = []
 
 
 # files
+
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'

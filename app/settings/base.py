@@ -1,18 +1,13 @@
 import os
-import sys
 
 from django.core.urlresolvers import reverse_lazy
 
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from .helpers import BASE_DIR
 
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# Security
 SECRET_KEY = '***** CHANGE ME *****'
 
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = []
@@ -155,42 +150,3 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-
-
-# Logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'detail': {
-            'format': (
-                '%(levelname)s %(asctime)s %(pathname)s:%(lineno)s '
-                '[%(funcName)s] %(message)s')
-        }
-    },
-    'handlers': {
-        'stdout': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'detail',
-            'stream': sys.stdout
-        }
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['stdout'],
-            'level': 'INFO',
-        },
-        '': {
-            'handlers': ['stdout'],
-            'level': 'INFO',
-        }
-    }
-}
-
-
-# Import local settings if they exist
-try:
-    from .local_settings import *
-except ImportError:
-    pass
