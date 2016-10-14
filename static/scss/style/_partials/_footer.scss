@@ -3,11 +3,41 @@
  * -------------
  */
 
-footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+.dj-footer {
+  padding: 4rem 0;
+  margin-top: 4rem;
+  font-size: 85%;
+  text-align: center;
 }
 
-footer p {
-  margin-bottom: .25rem;
+.dj-footer a {
+  font-weight: 500;
+  color: #55595c;
+}
+
+.dj-footer a:hover {
+  color: #0275d8;
+}
+
+.dj-footer p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 544px) {
+  .dj-footer {
+    text-align: left;
+  }
+}
+
+.dj-footer-links {
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.dj-footer-links li {
+  display: inline-block;
+}
+
+.dj-footer-links li + li {
+  margin-left: 1rem;
 }

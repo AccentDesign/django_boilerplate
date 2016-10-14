@@ -1,24 +1,27 @@
-.jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-    margin-bottom: 0;
-    background-color: #fff;
+.dj-album-banner {
 
-    .container {
-        max-width: 40rem;
-    }
-
-    p:last-child {
+    &.jumbotron {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
         margin-bottom: 0;
-    }
+        background-color: #fff;
 
-    .jumbotron-heading {
-        font-weight: 300;
-    }
+        .container {
+            max-width: 40rem;
+        }
 
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .jumbotron-heading {
+            font-weight: 300;
+        }
+
+    }
 }
 
-.album {
+.dj-album {
     padding-top: 3rem;
     padding-bottom: 3rem;
     background-color: #f7f7f7;

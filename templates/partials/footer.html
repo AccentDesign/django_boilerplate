@@ -1,9 +1,11 @@
 {% load i18n %}
-<footer class="text-muted">
+<footer class="dj-footer text-muted">
     <div class="container">
-        <p class="pull-xs-right">
-            <a href="#">{% trans 'back to top' %}</a>
-        </p>
-        <p>{% trans 'Footer' %}</p>
+        <ul class="dj-footer-links">
+            <li><a href="https://github.com/AccentDesign/django_boilerplate" target="_blank">GitHub</a></li>
+            <li><a href="https://accentdesign.co.uk" target="_blank">Accent Design</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+        <p>{% lorem 30 w %}</p>
     </div>
 </footer>

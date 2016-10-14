@@ -3,7 +3,7 @@
 {% block page_title %}Home{% endblock %}
 {% block body_class %}{% endblock %}
 {% block inner_content %}
-    <section class="jumbotron text-xs-center">
+    <section class="dj-album-banner jumbotron text-xs-center">
         <div class="container">
             <h1 class="jumbotron-heading">{% trans 'Django Boilerplate Starter Project' %}</h1>
             <p class="lead text-muted">{% trans 'Django starter project with email auth, bootstrap scss & elastic beanstalk config.' %}</p>
@@ -13,7 +13,7 @@
             </p>
         </div>
     </section>
-    <div class="album text-muted">
+    <div class="dj-album text-muted">
         <div class="container">
             <div class="row">
                 {% for i in 20|times %}
