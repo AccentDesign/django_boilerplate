@@ -2,7 +2,7 @@
 branch = True
 source = .
 omit =
-    *local_settings.py
+    *settings/*
     *wsgi.py
     *manage.py
     *migrations/*

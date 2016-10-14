@@ -26,13 +26,8 @@ Getting Started
 
     git clone https://github.com/AccentDesign/django_boilerplate.git
 
-2, You will also need some local settings as the default's are production ready.
 
-Copy the file ``app/local_settings.local`` to ``app/local_settings.py``
-In here you can define your own settings.
-
-
-3, Docker & Python
+2, Docker & Python
 
 Build the container::
 
