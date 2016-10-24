@@ -35,11 +35,8 @@
 
 var $ = require('gulp-load-plugins')();
 var gulp = require('gulp');
-var less = require('gulp-less');
-var rename = require("gulp-rename");
+var prefixer = require('autoprefixer');
 var runSequence = require('run-sequence');
-var sass = require('gulp-sass');
-var watch = require('gulp-watch');
 
 var config = {
     assetsDir: './static/assets',
@@ -56,24 +53,18 @@ var config = {
  */
 gulp.task('bootstrap_css', function() {
     return gulp.src(config.scssDir + '/bootstrap/bootstrap.scss')
-    .pipe($.sourcemaps.init())
-    .pipe(sass({
-        includePaths: [config.bootstrapDir + '/assets/stylesheets']
-    }))
-    .pipe($.postcss([
-        require('autoprefixer')({browsers: ['last 1 version']})
-    ]))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest(config.publicDir + '/css'));
+        .pipe($.sourcemaps.init())
+        .pipe($.sass({includePaths: [config.bootstrapDir + '/assets/stylesheets']}))
+        .pipe($.postcss([prefixer({browsers: ['last 1 version']})]))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
 gulp.task('bootstrap_compress', function () {
-  return gulp.src(config.publicDir + '/css/bootstrap.css')
-    .pipe($.csso())
-    .pipe($.rename({
-        suffix: '.min'
-    }))
-    .pipe(gulp.dest(config.publicDir + '/css'));
+    return gulp.src(config.publicDir + '/css/bootstrap.css')
+        .pipe($.cssmin())
+        .pipe($.rename({suffix: '.min'}))
+        .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
 gulp.task( 'bootstrap_css_min', ['bootstrap_css'], function (cb) {
@@ -82,12 +73,12 @@ gulp.task( 'bootstrap_css_min', ['bootstrap_css'], function (cb) {
 
 gulp.task('bootstrap_fonts', function() {
     return gulp.src(config.bootstrapDir + '/assets/fonts/bootstrap/*')
-    .pipe(gulp.dest(config.publicDir + '/fonts'));
+        .pipe(gulp.dest(config.publicDir + '/fonts'));
 });
 
 gulp.task('bootstrap_js', function() {
     return gulp.src(config.bootstrapDir + '/assets/javascripts/*.js')
-    .pipe(gulp.dest(config.publicDir + '/js'));
+        .pipe(gulp.dest(config.publicDir + '/js'));
 });
 
 
@@ -96,24 +87,18 @@ gulp.task('bootstrap_js', function() {
  */
 gulp.task('bootstrap4_css', function() {
     return gulp.src(config.scssDir + '/bootstrap4/bootstrap.scss')
-    .pipe($.sourcemaps.init())
-    .pipe(sass({
-        includePaths: [config.bootstrap4Dir + '/scss']
-    }))
-    .pipe($.postcss([
-        require('autoprefixer')({browsers: ['last 1 version']})
-    ]))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest(config.publicDir + '/css'));
+        .pipe($.sourcemaps.init())
+        .pipe($.sass({includePaths: [config.bootstrap4Dir + '/scss']}))
+        .pipe($.postcss([prefixer({browsers: ['last 1 version']})]))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
 gulp.task('bootstrap4_compress', function () {
-  return gulp.src(config.publicDir + '/css/bootstrap.css')
-    .pipe($.csso())
-    .pipe($.rename({
-        suffix: '.min'
-    }))
-    .pipe(gulp.dest(config.publicDir + '/css'));
+    return gulp.src(config.publicDir + '/css/bootstrap.css')
+        .pipe($.cssmin())
+        .pipe($.rename({suffix: '.min'}))
+        .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
 gulp.task( 'bootstrap4_css_min', ['bootstrap4_css'], function (cb) {
@@ -121,8 +106,12 @@ gulp.task( 'bootstrap4_css_min', ['bootstrap4_css'], function (cb) {
 });
 
 gulp.task('bootstrap4_js', function() {
-    return gulp.src([config.bootstrap4Dir + '/dist/js/bootstrap*.js', config.tetherDir + '/dist/js/*.js'])
-    .pipe(gulp.dest(config.publicDir + '/js'));
+    return gulp.src(
+        [
+            config.bootstrap4Dir + '/dist/js/bootstrap*.js',
+            config.tetherDir + '/dist/js/*.js'
+        ])
+        .pipe(gulp.dest(config.publicDir + '/js'));
 });
 
 
@@ -131,30 +120,22 @@ gulp.task('bootstrap4_js', function() {
  */
 gulp.task('style_css', function() {
     return gulp.src(config.scssDir + '/style/style.scss')
-    .pipe($.sourcemaps.init())
-    .pipe(sass({}))
-    .pipe($.postcss([
-        require('autoprefixer')({browsers: ['last 1 version']})
-    ]))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest(config.publicDir + '/css'));
+        .pipe($.sourcemaps.init())
+        .pipe($.sass({}))
+        .pipe($.postcss([prefixer({browsers: ['last 1 version']})]))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
 gulp.task('style_compress', function () {
-  return gulp.src(config.publicDir + '/css/style.css')
-    .pipe($.csso())
-    .pipe($.rename({
-        suffix: '.min'
-    }))
-    .pipe(gulp.dest(config.publicDir + '/css'));
+    return gulp.src(config.publicDir + '/css/style.css')
+        .pipe($.cssmin())
+        .pipe($.rename({suffix: '.min'}))
+        .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
 gulp.task( 'style_css_min', function(cb) {
-    runSequence(
-        'style_css', 
-        'style_compress', 
-        cb 
-    );
+    runSequence('style_css', 'style_compress', cb);
 });
 
 
@@ -162,17 +143,22 @@ gulp.task( 'style_css_min', function(cb) {
  * Global
  */
 gulp.task('style_watch', ['style_css_min'], function (){
-    gulp.watch([config.scssDir + '/style/*.scss', config.scssDir + '/style/**/*.scss'], ['style_css_min']);
+    gulp.watch(
+        [
+            config.scssDir + '/style/*.scss',
+            config.scssDir + '/style/**/*.scss'
+        ],
+        ['style_css_min']);
 });
 
-gulp.task('default', ['bootstrap4_css', 'style_css'], function (cb) {
+gulp.task('default', function (cb) {
     runSequence([
-        //'bootstrap_compress',
+        //'bootstrap_css_min',
         //'bootstrap_fonts',
         //'bootstrap_js',
-        'bootstrap4_compress',
+        'bootstrap4_css_min',
         'bootstrap4_js',
-        'style_compress'],
+        'style_css_min'],
         cb
     );
 });
