@@ -131,7 +131,8 @@ gulp.task('style_compress', function () {
     return gulp.src(config.publicDir + '/css/style.css')
         .pipe($.cssmin())
         .pipe($.rename({suffix: '.min'}))
-        .pipe(gulp.dest(config.publicDir + '/css'));
+        .pipe(gulp.dest(config.publicDir + '/css'))
+        .pipe($.livereload());
 });
 
 gulp.task( 'style_css_min', function(cb) {
@@ -143,6 +144,7 @@ gulp.task( 'style_css_min', function(cb) {
  * Global
  */
 gulp.task('style_watch', ['style_css_min'], function (){
+    $.livereload.listen();
     gulp.watch(
         [
             config.scssDir + '/style/*.scss',
