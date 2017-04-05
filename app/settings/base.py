@@ -147,6 +147,7 @@ MEDIA_URL = "/media/"
 # File Storage
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+FILE_UPLOAD_MAX_MEMORY_SIZE = 103809024  # 99MB - Cloudflare limit on existing plan is 100MB
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
