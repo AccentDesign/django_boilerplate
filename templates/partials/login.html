@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
-{% load bootstrap3 i18n %}
+{% load i18n %}
 {% block page_title %}Login{% endblock %}
 {% block body_class %}login-page{% endblock %}
 {% block full_outer_content %}
-    <div class="login-box text-xs-center">
-        <div class="login-logo">
-            <a href="/"><b>Example</b>.com</a>
-        </div>
-        <div class="login-box-body">
-            {% block box_content %}{% endblock %}
+    <div class="full-visual-height d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                <div class="login-home-link">
+                    <a href="/">{% trans 'Go Home' %}</a>
+                </div>
+                {% block box_content %}{% endblock %}
+            </div>
+            </div>
         </div>
     </div>
 {% endblock %}

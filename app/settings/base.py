@@ -1,6 +1,6 @@
 import os
 
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 
 from .helpers import BASE_DIR
 
@@ -10,18 +10,14 @@ SECRET_KEY = '***** CHANGE ME *****'
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
-ALLOWED_HOSTS += os.environ.get('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = [] + os.environ.get('ALLOWED_HOSTS', '').split(',')
 
 
 # Application definition
 
-SITE_ID = 1
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -30,17 +26,15 @@ INSTALLED_APPS = [
     'app',
     'authentication',
 
-    'bootstrap3',
     'storages',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]

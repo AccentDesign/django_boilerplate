@@ -1,11 +1,4 @@
 boto
-django
-django-bootstrap3
+django==2.0b1
 django-storages
-
-# accent
-# git+https://github.com/AccentDesign/Accent_SoftDelete.git@master#egg=soft_delete
-
-# postgres & mysql client
 psycopg2
-mysqlclient
