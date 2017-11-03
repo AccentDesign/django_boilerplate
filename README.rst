@@ -63,3 +63,15 @@ To see the test results and coverage report run::
    make test
 
 The html coverage report is visible in the browser by looking at the htmlcov/index.html once the tests have run.
+
+
+Styles
+******
+
+npm install::
+
+   npm install
+
+build css::
+
+   npm run watch:scss
