@@ -1,19 +1,13 @@
 {% extends 'partials/login.html' %}
-{% load bootstrap3 i18n %}
+{% load i18n %}
 {% block page_title %}Login{% endblock %}
 {% block box_content %}
-    <p class="login-box-msg">{% trans 'Login to get started' %}</p>
-    <form class="form" action="{{ app_path }}" method="post" id="login-form" novalidate>
+    <p>{% trans 'Login to get started' %}</p>
+    <form class="form" method="post"novalidate>
         {% csrf_token %}
-        {% bootstrap_form_errors form %}
-        {% for field in form %}
-            {% bootstrap_field field show_label=False %}
-        {% endfor %}
-        {% buttons %}
-            {% bootstrap_button button_type='submit' button_class='btn-primary btn-block btn-flat' content='Sign In' %}
-        {% endbuttons %}
+        {{ form }}
+        <input type="submit" class="button button-primary" value="Login">
     </form>
-    <div class="social-auth-links"></div>
     <div>
         <a href="{% url 'admin_password_reset' %}">{% trans 'Forgot your password?' %}</a>
     </div>

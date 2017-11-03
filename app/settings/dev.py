@@ -2,7 +2,7 @@ import os
 
 from .base import (
     INSTALLED_APPS,
-    MIDDLEWARE_CLASSES
+    MIDDLEWARE
 )
 
 
@@ -20,7 +20,7 @@ DEBUG_TOOLBAR_CONFIG = {
 
 INSTALLED_APPS += ['debug_toolbar', ]
 
-MIDDLEWARE_CLASSES += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
+MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
 
 
 # database

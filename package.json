@@ -1,38 +1,32 @@
 {
   "name": "django_boilerplate",
-  "version": "0.0.1",
-  "directories": {},
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://bitbucket.org/accent/django_boilerplate.git"
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "scripts": {
+    "fontello": "gulp fontello",
+    "watch:scss": "gulp watch"
   },
-  "author": "Stuart George",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://bitbucket.org/accent/django_boilerplate/issues"
-  },
-  "homepage": "https://bitbucket.org/accent/django_boilerplate#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.5",
-    "bootstrap-sass": "^3.3.6",
-    "font-awesome": "^4.6.3",
-    "jquery": "^1.9.0",
-    "tether": "^1.3.7"
   },
   "devDependencies": {
-    "autoprefixer": "^6.5.0",
+    "autoprefixer": "^7.1.1",
     "gulp": "^3.9.1",
-    "gulp-cssmin": "^0.1.7",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-fontello": "^0.4.6",
     "gulp-livereload": "^3.8.1",
     "gulp-load-plugins": "^1.2.4",
-    "gulp-postcss": "^6.1.1",
+    "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.0.6",
-    "gulp-sass": "^2.3.1",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
     "gulp-watch": "^4.3.6",
-    "node-sass": "^3.7.0",
-    "run-sequence": "^1.2.1"
+    "karma-css": "latest",
+    "postcss-discard-comments": "^2.0.4",
+    "postcss-discard-empty": "^2.1.0",
+    "postcss-merge-rules": "^2.1.2",
+    "run-sequence": "^2.1.0"
   }
 }

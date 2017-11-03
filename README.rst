@@ -16,8 +16,7 @@ Bare bones starter project complete with the following
 
 - Email authentication
 - Login, password reset, password change
-- Bootstrap3
-- AWS Elastic Beanstalk basic config
+- Karma CSS
 
 Getting Started
 ***************
@@ -64,71 +63,3 @@ To see the test results and coverage report run::
    make test
 
 The html coverage report is visible in the browser by looking at the htmlcov/index.html once the tests have run.
-
-
-Styling
-*******
-
-1, You will need node js installed, please see online for setup
-
-2, To make any style tweaks you will need to install all project dependencies like so::
-
-    npm install
-
-you will propably need gulp and gulp-cli as global dependencies::
-
-    npm install -g gulp gulp-cli
-
-3, ``static/scss`` is where you set up your styles,
-
-``static/scss/bootstrap/_bootstrap/_variables.scss`` & ``static/scss/bootstrap4/_bootstrap/_variables.scss`` are the variables.
-
-4, the ``gulpfile.js`` has a list of tasks to run, to get you started running just gulp will build, compress and repopulate
-the ``static/dist`` folder::
-
-    gulp
-
-    eg:
-
-    ....
-    [09:43:21] Finished 'default' after 271 ms
-
-Deployment on Elastic Beanstalk
-*******************************
-
-The file `.ebextensions/01_settings.config` contains a list of all the environment settings required for email, mysql & s3.
-
-
-The following will setup an elasticbeanstalk environment with no dedicated rds, adjust as required::
-
-2, You will need to install `awsebcli`::
-
-   pip install awsebcli
-
-http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html
-
-3, BEFORE THIS MAKE SURE EVERYTHING IS COMMITTED, run the following commands following the prompts::
-
-   eb init -i
-   eb create # optional --db if dedicated rds is required
-   eb use <environment-name>
-   eb deploy
-
-4, Step 3 will have created a `.elasticbeanstalk/config.yml` which will be ignored in your `.gitignore` file,
-please remove these ignored lines as jenkins wont know where to deploy it without them.
-
-
-Pycharm OSX Interpreter
-***********************
-
-Connect SOCAT to docker native::
-
-   brew install socat
-   socat TCP-LISTEN:2375,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock
-
-
-Pycharm docker API URL:
-
-   tcp://localhost:2375
-
-Leave certificates folder empty.
