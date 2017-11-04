@@ -5,7 +5,6 @@ services:
     build: .
     env_file:
     - docker.env
-    command: ./devserver.sh
     volumes_from:
     - app-datavolume
     depends_on:
@@ -13,6 +12,7 @@ services:
     - mail
     ports:
     - "8000:8000"
+    command: ['python', './manage.py', 'runserver', '0.0.0.0:8000']
 
   mail:
     image: mailhog/mailhog

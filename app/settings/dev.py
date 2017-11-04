@@ -1,4 +1,4 @@
-import os
+from os import environ
 
 from .base import (
     INSTALLED_APPS,
@@ -28,11 +28,11 @@ MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': os.environ.get('RDS_HOSTNAME'),
-        'PORT': os.environ.get('RDS_PORT'),
-        'NAME': os.environ.get('RDS_DB_NAME'),
-        'USER': os.environ.get('RDS_USERNAME'),
-        'PASSWORD': os.environ.get('RDS_PASSWORD'),
+        'HOST': environ.get('RDS_HOSTNAME'),
+        'PORT': environ.get('RDS_PORT'),
+        'NAME': environ.get('RDS_DB_NAME'),
+        'USER': environ.get('RDS_USERNAME'),
+        'PASSWORD': environ.get('RDS_PASSWORD'),
     }
 }
 

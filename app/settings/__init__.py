@@ -1,11 +1,14 @@
 from .base import *
+from .helpers import env_mode
 from .logging import *
 
 
-# dev settings
+# environment settings
+
 try:
-    from .helpers import dev_mode
-    if dev_mode():
+    if env_mode() == 'DEV':
         from .dev import *
+    if env_mode() == 'STAGING':
+        from .staging import *
 except ImportError:
     pass

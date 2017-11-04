@@ -1,18 +1,21 @@
-import os
+from os import environ
+from os.path import dirname, abspath
 import sys
 
 
 # project root
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
 
-def dev_mode():
+def env_mode():
     """
-    Check if we want to be in dev mode, this will be used to pull in dev settings overrides.
-
+    Check if we want to be in dev mode or staging mode, this will be used to pull in correct settings overrides.
     :return bool:
     """
-    return os.environ.get('DEV_MODE') is not None
+    if environ.get('DEV_MODE') is not None:
+        return 'DEV'
+    if environ.get('STAGING_MODE') is not None:
+        return 'STAGING'
 
 
 def show_toolbar(request):
