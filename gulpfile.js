@@ -42,16 +42,11 @@ var config = {
     cssmin: {}
 };
 
-function handleError (error) {
-    console.log(error.toString());
-    this.emit('end')
-}
-
 gulp.task('scss', function() {
     return gulp.src(config.scssDir + '/*.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass(config.sass))
-    .on('error', handleError($.sass.logError))
+    .on('error', $.sass.logError)
     .pipe($.postcss([
         discardcomments(),
         discardempty(),
