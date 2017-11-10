@@ -38,13 +38,13 @@ Up the container, this will also run migrations for you::
 
 Create yourself a superuser::
 
-    docker exec -it <container_name> bash
+    docker-compose exec app bash
     python manage.py createsuperuser --email=admin@example.com --first_name=Admin --last_name=User
 
 
 Run python migrations manually::
 
-    docker exec -it <container_name> bash
+    docker-compose exec app bash
     python manage.py migrate
 
 
