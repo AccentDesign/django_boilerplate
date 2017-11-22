@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 html{
   line-height:1.15;
@@ -1175,7 +1176,7 @@ a{
     outline:0; }
 
 code{
-  font-family:monospace, monospace;
+  font-family:"Inconsolata", monospace;
   padding:.2rem .5rem;
   font-size:90%;
   white-space:nowrap;
