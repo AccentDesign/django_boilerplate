@@ -9,10 +9,6 @@ while ! psql -h $RDS_HOSTNAME -d $RDS_DB_NAME -p $RDS_PORT -U $RDS_USERNAME -c "
 done;
 echo 'Connected to db...';
 
-if [ "x$DEV_MODE" = 'xon' ]; then
-    pip install -r test-requirements.txt
-fi
-
 if [ "x$DJANGO_MANAGEPY_MIGRATE" = 'xon' ]; then
     python manage.py migrate --noinput
 fi

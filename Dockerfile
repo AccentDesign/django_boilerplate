@@ -1,5 +1,7 @@
 FROM        python:3.6
 
+ARG         DEV_MODE
+
 WORKDIR     /var/app
 ADD         . /var/app
 
@@ -9,7 +11,10 @@ RUN         apt-get update && apt-get install -y \
                 libpq-dev \
             --no-install-recommends && rm -rf /var/lib/apt/lists/
 
-RUN         pip install --no-cache-dir -r /var/app/requirements.txt
+# Python packages
+RUN         if [ "x$DEV_MODE" = 'xon' ] ; then \
+            pip install --no-cache-dir -r test-requirements.txt ; else \
+            pip install --no-cache-dir -r requirements.txt ; fi
 
 # Expose port
 EXPOSE 8000

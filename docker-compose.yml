@@ -2,11 +2,24 @@ version: '2'
 
 services:
   app:
-    build: .
-    env_file:
-    - docker.env
-    volumes_from:
-    - app-datavolume
+    build:
+      context: .
+      args:
+      - DEV_MODE=on
+    environment:
+    - DJANGO_MANAGEPY_COLLECTSTATIC=off
+    - DEV_MODE=on
+    - DJANGO_SETTINGS_MODULE=app.settings
+    - ALLOWED_HOSTS=*
+    - EMAIL_HOST=mail
+    - EMAIL_PORT=1025
+    - RDS_HOSTNAME=db
+    - RDS_PORT=5432
+    - RDS_DB_NAME=postgres
+    - RDS_USERNAME=postgres
+    - RDS_PASSWORD=password
+    volumes:
+    - .:/var/app
     depends_on:
     - db
     - mail
@@ -28,17 +41,5 @@ services:
     - POSTGRES_PASSWORD=password
     - POSTGRES_DB=postgres
     - PGDATA=/var/lib/postgresql/data/pgdata
-    volumes_from:
-    - db-datavolume
-
-  app-datavolume:
-    image: busybox
-    volumes:
-    - .:/var/app
-    command: /bin/echo
-
-  db-datavolume:
-    image: busybox
     volumes:
     - ./.postgres:/var/lib/postgresql/data/pgdata
-    command: /bin/echo
