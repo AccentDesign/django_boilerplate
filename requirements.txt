@@ -1,5 +1,5 @@
 boto3
-django==2.0rc1
+django
 django-storages
 psycopg2
 uwsgi
