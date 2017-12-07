@@ -2,8 +2,8 @@ FROM        python:3.6
 
 ARG         DEV_MODE
 
-WORKDIR     /var/app
-ADD         . /var/app
+WORKDIR     /code
+ADD         . /code
 
 # Install dependencies
 RUN         apt-get update && apt-get install -y \
@@ -49,7 +49,7 @@ ENV UWSGI_WSGI_FILE=app/wsgi.py \
 ENV DJANGO_MANAGEPY_MIGRATE=on \
     DJANGO_MANAGEPY_COLLECTSTATIC=on
 
-ENTRYPOINT ["/var/app/docker-entrypoint.sh"]
+ENTRYPOINT ["/code/docker-entrypoint.sh"]
 
 # Start uWSGI:
 CMD ["uwsgi", "--http-auto-chunked", "--http-keepalive"]

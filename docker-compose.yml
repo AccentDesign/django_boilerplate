@@ -19,7 +19,7 @@ services:
     - RDS_USERNAME=postgres
     - RDS_PASSWORD=password
     volumes:
-    - .:/var/app
+    - .:/code
     depends_on:
     - db
     - mail
