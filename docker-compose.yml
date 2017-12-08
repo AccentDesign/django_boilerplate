@@ -5,7 +5,7 @@ services:
     build:
       context: .
       args:
-      - DEV_MODE=on
+      - REQUIREMENTS_FILE=/build/requirements/dev.txt
     environment:
     - DJANGO_MANAGEPY_COLLECTSTATIC=off
     - DEV_MODE=on
@@ -35,7 +35,7 @@ services:
     - "8025:8025"
 
   db:
-    image: postgres
+    image: postgres:9.6
     environment:
     - POSTGRES_USER=postgres
     - POSTGRES_PASSWORD=password

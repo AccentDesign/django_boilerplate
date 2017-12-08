@@ -1,5 +1,5 @@
 # base requirements
--r requirements.txt
+-r base.txt
 
 # test requirements
 coverage
