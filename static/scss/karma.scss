@@ -7,10 +7,23 @@
 @import "karma-css/scss/variables";
 @import "karma-css/scss/import";
 
+/* karma-css components */
+@import "component-variables";
+
+@import "karma-css-components/scss/components/alert";
+// @import "karma-css-components/scss/components/button-group";
+// @import "karma-css-components/scss/components/card";
+@import "karma-css-components/scss/components/checkbox";
+// @import "karma-css-components/scss/components/divider";
+@import "karma-css-components/scss/components/icon-input";
+@import "karma-css-components/scss/components/input-group";
+// @import "karma-css-components/scss/components/switch";
+// @import "karma-css-components/scss/components/tag";
+@import "karma-css-components/scss/components/tooltip";
+
 /* add your custom modules here */
 @import "module/form";
 @import "module/login";
-
 
 /* karma-css utilities */
 @import "karma-css/scss/utilities";

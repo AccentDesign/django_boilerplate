@@ -19,14 +19,14 @@
     "gulp-load-plugins": "^1.2.4",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-ruby-sass": "^2.0.6",
+    "gulp-ruby-sass": "^3.0.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
-    "gulp-watch": "^4.3.6",
-    "karma-css": "latest",
+    "gulp-watch": "^5.0.0",
+    "karma-css": "git+https://git@github.com/accentdesign/karma-css.git",
+    "karma-css-components": "git+https://git@github.com/accentdesign/karma-css-components.git",
     "postcss-discard-comments": "^2.0.4",
     "postcss-discard-empty": "^2.1.0",
-    "postcss-merge-rules": "^2.1.2",
     "run-sequence": "^2.1.0"
   }
 }
