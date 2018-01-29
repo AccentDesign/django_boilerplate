@@ -1,5 +1,6 @@
 boto3
 django
 django-storages
+pillow
 psycopg2
 uwsgi
