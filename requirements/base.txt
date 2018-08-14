@@ -2,6 +2,6 @@ boto3
 django
 django-storages
 pillow
-psycopg2
+psycopg2-binary
 raven
 uwsgi
