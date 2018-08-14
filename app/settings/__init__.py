@@ -1,6 +1,5 @@
 from .base import *
 from .helpers import env_mode
-from .logging import *
 
 
 # environment settings
@@ -10,5 +9,8 @@ try:
         from .dev import *
     if env_mode() == 'STAGING':
         from .staging import *
+        from .sentry import *
+    else:
+        from .sentry import *
 except ImportError:
     pass

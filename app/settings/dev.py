@@ -1,4 +1,5 @@
 from os import environ
+import sys
 
 from .base import (
     INSTALLED_APPS,
@@ -18,9 +19,13 @@ DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': 'app.settings.helpers.show_toolbar',
 }
 
-INSTALLED_APPS += ['debug_toolbar', ]
+INSTALLED_APPS += [
+    'debug_toolbar',
+]
 
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
+MIDDLEWARE += [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
 
 
 # database
@@ -45,3 +50,32 @@ AUTH_PASSWORD_VALIDATORS = []
 # files
 
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'detail': {
+            'format': (
+                '%(levelname)s %(asctime)s %(pathname)s:%(lineno)s '
+                '[%(funcName)s] %(message)s')
+        }
+    },
+    'handlers': {
+        'stdout': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'detail',
+            'stream': sys.stdout
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['stdout'],
+            'level': 'INFO',
+        }
+    }
+}
