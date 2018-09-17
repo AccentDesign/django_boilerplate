@@ -127,6 +127,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
+STATICFILES_STORAGE = 'app.storages.S3StaticStorage'
+STATICFILES_LOCATION = 'static'
 STATICFILES_DIRS = [
     join(BASE_DIR, "static"),
 ]

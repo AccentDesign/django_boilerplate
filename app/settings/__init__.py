@@ -7,7 +7,7 @@ from .helpers import env_mode
 try:
     if env_mode() == 'DEV':
         from .dev import *
-    if env_mode() == 'STAGING':
+    elif env_mode() == 'STAGING':
         from .staging import *
         from .sentry import *
     else:

@@ -22,3 +22,9 @@ class S3PrivateStorage(S3Boto3Storage):
 
 class S3PublicStorage(S3Boto3Storage):
     """ Just subclass or use original class """
+
+
+class S3StaticStorage(S3Boto3Storage):
+    """ Stores files with the path prefix STATICFILES_LOCATION """
+
+    location = settings.STATICFILES_LOCATION
