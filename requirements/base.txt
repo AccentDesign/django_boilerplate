@@ -3,5 +3,5 @@ django
 django-storages
 pillow
 psycopg2-binary
-raven
+sentry-sdk
 uwsgi

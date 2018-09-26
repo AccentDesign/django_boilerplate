@@ -151,7 +151,22 @@ AWS_S3_CUSTOM_DOMAIN = None  # Add for cloudfront etc
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
+AWS_QUERYSTRING_AUTH = False
 AWS_QUERYSTRING_EXPIRE = 3600
 AWS_S3_FILE_OVERWRITE = False
 AWS_IS_GZIPPED = True
 AWS_AUTO_CREATE_BUCKET = True
+
+
+# Sentry - if its installed and we have a dsn in the environment
+
+try:
+    if environ.get('SENTRY_DSN'):
+
+        import sentry_sdk
+        from sentry_sdk.integrations.django import DjangoIntegration
+
+        sentry_sdk.init(dsn=environ.get('SENTRY_DSN'), integrations=[DjangoIntegration()])
+
+except ImportError:
+    pass
