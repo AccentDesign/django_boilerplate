@@ -1,8 +1,7 @@
 @charset "UTF-8";
 /* karma-css */
-@import url("https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans:300,400,400i,600,700");
 /* karma-css core */
-/*! Karma-CSS v1.9.5 MIT License | http://karmacss.com | https://github.com/accentdesign/karma-css */
+/*! Karma-CSS v1.9.7 MIT License | http://karmacss.com | https://github.com/accentdesign/karma-css */
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -1175,11 +1174,6 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 ::-moz-placeholder {
-  color: #b9b9b9;
-  opacity: 1;
-}
-
-:-ms-input-placeholder {
   color: #b9b9b9;
   opacity: 1;
 }
@@ -2492,7 +2486,7 @@ ul.radios input[type=radio] + span:after {
 }
 
 .muted {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .nowrap {
