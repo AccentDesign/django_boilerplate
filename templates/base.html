@@ -1,11 +1,12 @@
 {% load i18n static %}
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Example.com | {% block page_title %}{% endblock %}</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" href="{% static 'dist/images/favicon.png' %}">
         <link rel="stylesheet" href="{% static 'dist/css/karma.min.css' %}">
         {% include 'partials/webfont.html' %}
         {% block extra_css %}{% endblock %}
