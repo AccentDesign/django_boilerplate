@@ -8,24 +8,23 @@
     "css": "npm-run-all css-compile* --sequential css-prefix* css-minify* fontello-dist*",
     "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 static/scss/karma.scss static/dist/css/karma.css",
     "css-prefix": "postcss --config postcss.config.js --replace \"static/dist/css/*.css\" \"!static/dist/css/*.min.css\"",
-    "css-minify": "cleancss --level 1 --source-map --source-map-inline-sources --output static/dist/css/karma.min.css static/dist/css/karma.css",
+    "css-minify": "cleancss -O1 --source-map --source-map-inline-sources --output static/dist/css/karma.min.css static/dist/css/karma.css",
     "fontello-dist": "cpy 'static/scss/fontello/font/*' static/dist/font",
     "fontello-install": "fontello-cli install --config static/scss/fontello/config.json --css static/scss/fontello/css --font static/scss/fontello/font",
     "fontello-web": "fontello-cli open --config static/scss/fontello/config.json",
-    "watch-css": "nodemon --ignore static/dist/ -e scss -x \"npm run css\""
+    "watch:scss": "nodemon --ignore static/dist/ -e scss -x \"npm run css\""
   },
-  "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^7.2.5",
-    "clean-css-cli": "^4.1.10",
-    "cpy-cli": "^1.0.1",
-    "fontello-cli": "^0.4.0",
+    "autoprefixer": "^10.2.5",
+    "clean-css-cli": "^5.3.0",
+    "cpy-cli": "^3.1.1",
+    "fontello-cli": "^0.6.2",
     "karma-css": "git+https://git@github.com/accentdesign/karma-css.git",
-    "karma-css-components": "git+https://git@github.com/accentdesign/karma-css-components.git",
-    "node-sass": "^4.7.2",
-    "nodemon": "^1.14.11",
-    "npm-run-all": "^4.1.2",
-    "postcss-cli": "^4.1.1"
+    "node-sass": "^6.0.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.15",
+    "postcss-cli": "^8.3.1"
   },
   "browserslist": [
     "last 1 major version",
