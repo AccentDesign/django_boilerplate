@@ -1,4 +1,4 @@
-FROM        python:3.6
+FROM        python:3.8
 
 # Build args
 ARG         REQUIREMENTS_FILE=/build/requirements/base.txt

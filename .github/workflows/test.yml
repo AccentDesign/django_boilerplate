@@ -1,0 +1,41 @@
+name: Testing Workflow
+
+on: push 
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:9.6
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_BD: postgres
+        ports:
+        - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Set up Python 3.8.x
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8.x
+
+    - name: Install Dependencies
+      run: pip install -r requirements/dev.txt
+
+    - name: Run Linting and Tests
+      env:
+        PYTHONUNBUFFERED: 1
+        ALLOWED_HOSTS: "*"
+        RDS_HOSTNAME: localhost
+        RDS_PORT: 5432
+        RDS_DB_NAME: postgres
+        RDS_USERNAME: postgres
+        RDS_PASSWORD: password
+      run: make test

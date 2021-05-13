@@ -63,6 +63,8 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # Database
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -166,7 +168,11 @@ try:
         import sentry_sdk
         from sentry_sdk.integrations.django import DjangoIntegration
 
-        sentry_sdk.init(dsn=environ.get('SENTRY_DSN'), integrations=[DjangoIntegration()])
+        sentry_sdk.init(
+            dsn=environ.get('SENTRY_DSN'),
+            integrations=[DjangoIntegration()],
+            send_default_pii=True,
+        )
 
 except ImportError:
     pass
