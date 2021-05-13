@@ -2,8 +2,6 @@
 Django Boilerplate
 ******************
 
-|Build_Status| |Coverage_Status|
-
 .. image:: https://github.com/AccentDesign/django_boilerplate/workflows/Testing%20Workflow/badge.svg
     :target: https://github.com/AccentDesign/django_boilerplate/workflows/Testing%20Workflow/
 
