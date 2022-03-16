@@ -1,4 +1,4 @@
-FROM        python:3.8
+FROM        python:3.10-slim
 
 # Build args
 ARG         REQUIREMENTS_FILE=/build/requirements/base.txt
@@ -14,7 +14,6 @@ RUN         set -ex \
                 libjpeg62 \
                 libjpeg62-turbo-dev \
                 libpq-dev \
-                postgresql-client \
             --no-install-recommends \
             && rm -rf /var/lib/apt/lists/ \
             && pip install --no-cache-dir -r $REQUIREMENTS_FILE
