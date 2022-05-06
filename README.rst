@@ -47,7 +47,7 @@ Run python migrations manually::
 Ready!!
 *******
 
-The container is ready at http://<docker host ip>:8000/ and a mail server ready at http://<docker host ip>:1080/
+The container is ready at http://<docker host ip>:8000/ and a mail server ready at http://<docker host ip>:8025/
 
 
 Testing
@@ -56,7 +56,7 @@ Testing
 To see the test results and coverage report run::
 
    docker-compose exec app bash
-   make test
+   python manage.py test
 
 The html coverage report is visible in the browser by looking at the htmlcov/index.html once the tests have run.
 
