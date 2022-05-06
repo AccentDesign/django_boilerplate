@@ -1,10 +1,7 @@
 FROM        python:3.10-slim
 
 # Build args
-ARG         REQUIREMENTS_FILE=/build/requirements/base.txt
-
-# Copy in your requirements folder
-ADD         requirements /build/requirements/
+ARG         PIPENV_INSTALL_OPTIONS=--deploy
 
 # Install dependencies
 RUN         set -ex \
@@ -15,8 +12,18 @@ RUN         set -ex \
                 libjpeg62-turbo-dev \
                 libpq-dev \
             --no-install-recommends \
-            && rm -rf /var/lib/apt/lists/ \
-            && pip install --no-cache-dir -r $REQUIREMENTS_FILE
+            && rm -rf /var/lib/apt/lists/
+
+# Install pipenv and compilation dependencies
+RUN         pip install pipenv
+
+# Install python dependencies in /.venv
+COPY        Pipfile* /
+ARG         PIPENV_INSTALL_OPTIONS
+RUN         PIPENV_VENV_IN_PROJECT=1 pipenv install $PIPENV_INSTALL_OPTIONS
+
+# Set the path to the virtualenv
+ENV         PATH="/.venv/bin:$PATH"
 
 # Copy your application code to the container
 RUN         mkdir /code/
@@ -25,9 +32,11 @@ ADD         . /code/
 
 # Add any custom, static environment variables needed by Django:
 ENV         PYTHONUNBUFFERED=1 \
+            PYTHONDONTWRITEBYTECODE=1 \
             DJANGO_SETTINGS_MODULE=app.settings \
             SECRET_KEY='***** change me *****' \
             ALLOWED_HOSTS=* \
+            CSRF_TRUSTED_ORIGINS=http://localhost:8000 \
             RDS_HOSTNAME=db \
             RDS_PORT=5432 \
             RDS_DB_NAME=postgres \

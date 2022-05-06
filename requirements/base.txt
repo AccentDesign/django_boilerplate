@@ -1,7 +1,0 @@
-boto3
-django
-django-storages
-pillow
-psycopg2-binary
-sentry-sdk
-uwsgi

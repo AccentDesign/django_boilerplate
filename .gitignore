@@ -1,9 +1,3 @@
 node_modules
-.idea
-.postgres
-db.sqlite3
 **__pycache__**
 *.pyc
-.coverage
-htmlcov
-app/local_settings.py

@@ -26,16 +26,35 @@ jobs:
       with:
         python-version: 3.10.x
 
-    - name: Install Dependencies
-      run: pip install -r requirements/dev.txt
+    - name: Install pipenv
+      run: |
+        python -m pip install --upgrade pipenv
+
+    - id: cache-pipenv
+      uses: actions/cache@v1
+      with:
+        path: ~/.local/share/virtualenvs
+        key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+
+    - name: Install dependencies
+      if: steps.cache-pipenv.outputs.cache-hit != 'true'
+      run: |
+        pipenv install --deploy --dev;
 
     - name: Run Linting and Tests
       env:
         PYTHONUNBUFFERED: 1
+        DEV_MODE: on
+        SECRET_KEY: secret
         ALLOWED_HOSTS: "*"
+        CSRF_TRUSTED_ORIGINS: "http://localhost:8000"
         RDS_HOSTNAME: localhost
         RDS_PORT: 5432
         RDS_DB_NAME: postgres
         RDS_USERNAME: postgres
         RDS_PASSWORD: password
-      run: make test
+      run: |
+        pipenv run isort --check --diff . ;
+        pipenv run black --check --diff . ;
+        pipenv run flake8 . ;
+        PIPENV_DONT_LOAD_ENV=1 pipenv run python manage.py test ;

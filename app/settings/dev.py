@@ -1,11 +1,6 @@
 from os import environ
-import sys
 
-from .base import (
-    INSTALLED_APPS,
-    MIDDLEWARE
-)
-
+from .base import INSTALLED_APPS, MIDDLEWARE
 
 # Security
 
@@ -15,29 +10,29 @@ DEBUG = True
 # debug toolbar
 
 DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_COLLAPSED': True,
-    'SHOW_TOOLBAR_CALLBACK': 'app.settings.helpers.show_toolbar',
+    "SHOW_COLLAPSED": True,
+    "SHOW_TOOLBAR_CALLBACK": "app.settings.helpers.show_toolbar",
 }
 
 INSTALLED_APPS += [
-    'debug_toolbar',
+    "debug_toolbar",
 ]
 
 MIDDLEWARE += [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 
 # database
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': environ.get('RDS_HOSTNAME'),
-        'PORT': environ.get('RDS_PORT'),
-        'NAME': environ.get('RDS_DB_NAME'),
-        'USER': environ.get('RDS_USERNAME'),
-        'PASSWORD': environ.get('RDS_PASSWORD'),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "HOST": environ.get("RDS_HOSTNAME"),
+        "PORT": environ.get("RDS_PORT"),
+        "NAME": environ.get("RDS_DB_NAME"),
+        "USER": environ.get("RDS_USERNAME"),
+        "PASSWORD": environ.get("RDS_PASSWORD"),
     }
 }
 
@@ -49,9 +44,9 @@ AUTH_PASSWORD_VALIDATORS = []
 
 # static
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 
 # files
 
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"

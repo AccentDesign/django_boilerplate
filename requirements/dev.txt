@@ -1,7 +1,0 @@
-# base requirements
--r base.txt
-
-# test requirements
-coverage
-django-debug-toolbar
-flake8

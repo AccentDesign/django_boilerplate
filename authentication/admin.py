@@ -9,19 +9,62 @@ from authentication.models import User
 class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
-    list_display = ('email', 'first_name', 'last_name', 'is_active', 'is_staff')
+    list_display = ("email", "first_name", "last_name", "is_active", "is_staff")
     fieldsets = (
-        (None, {'fields': ('email', 'password', )}),
-        ('Personal info', {'fields': ('first_name', 'last_name', )}),
-        ('Important dates', {'fields': ('last_login', )}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', )}),
+        (
+            None,
+            {
+                "fields": (
+                    "email",
+                    "password",
+                )
+            },
+        ),
+        (
+            "Personal info",
+            {
+                "fields": (
+                    "first_name",
+                    "last_name",
+                )
+            },
+        ),
+        ("Important dates", {"fields": ("last_login",)}),
+        (
+            "Permissions",
+            {
+                "fields": (
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                )
+            },
+        ),
     )
     add_fieldsets = (
-        (None, {'fields': ('email', 'password1', 'password2', )}),
-        ('Personal info', {'fields': ('first_name', 'last_name', )}),
+        (
+            None,
+            {
+                "fields": (
+                    "email",
+                    "password1",
+                    "password2",
+                )
+            },
+        ),
+        (
+            "Personal info",
+            {
+                "fields": (
+                    "first_name",
+                    "last_name",
+                )
+            },
+        ),
     )
-    search_fields = ('email', )
-    ordering = ('email', )
+    search_fields = ("email",)
+    ordering = ("email",)
 
 
 admin.site.register(Session)
