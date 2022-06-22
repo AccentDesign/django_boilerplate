@@ -47,17 +47,6 @@ ENV         PYTHONUNBUFFERED=1 \
             EMAIL_HOST_USER=user \
             EMAIL_HOST_PASSWORD=password
 
-# uWSGI configuration:
-ENV         UWSGI_WSGI_FILE=app/wsgi.py \
-            UWSGI_HTTP=:8000 \
-            UWSGI_MASTER=1 \
-            UWSGI_WORKERS=2 \
-            UWSGI_THREADS=8 \
-            UWSGI_UID=1000 \
-            UWSGI_GID=2000 \
-            UWSGI_LAZY_APPS=1 \
-            UWSGI_WSGI_ENV_BEHAVIOR=holy
-
 # Docker entrypoint:
 ENV         DJANGO_MANAGEPY_MIGRATE=on \
             DJANGO_MANAGEPY_COLLECTSTATIC=on
@@ -65,4 +54,4 @@ ENV         DJANGO_MANAGEPY_MIGRATE=on \
 ENTRYPOINT  ["/code/docker-entrypoint.sh"]
 
 # Start uWSGI:
-CMD         ["uwsgi", "--http-auto-chunked", "--http-keepalive"]
+CMD         ["uwsgi", "--ini", "uwsgi.ini"]
