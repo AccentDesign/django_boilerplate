@@ -30,4 +30,4 @@ def show_toolbar(request):
     """
     if sys.argv[1:2] == ["test"]:
         return False
-    return True
+    return False

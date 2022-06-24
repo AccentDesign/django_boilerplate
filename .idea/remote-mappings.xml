@@ -6,7 +6,7 @@
         <remote-mappings server-id="python@docker-compose://[/Volumes/Samsung/Code/Accent/django_boilerplate/docker-compose.yml]:app/python">
           <settings>
             <list>
-              <mapping local-root="$PROJECT_DIR$" remote-root="/code" />
+              <mapping local-root="$PROJECT_DIR$" remote-root="/app" />
             </list>
           </settings>
         </remote-mappings>

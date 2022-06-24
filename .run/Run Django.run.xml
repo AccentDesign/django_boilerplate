@@ -12,10 +12,10 @@
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <option name="launchJavascriptDebuger" value="false" />
-    <option name="port" value="8000" />
+    <option name="port" value="80" />
     <option name="host" value="0.0.0.0" />
     <option name="additionalOptions" value="" />
-    <option name="browserUrl" value="http://localhost:8000/" />
+    <option name="browserUrl" value="http://localhost/" />
     <option name="runTestServer" value="false" />
     <option name="runNoReload" value="false" />
     <option name="useCustomRunCommand" value="false" />

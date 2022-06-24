@@ -44,9 +44,9 @@ AUTH_PASSWORD_VALIDATORS = []
 
 # static
 
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+STATICFILES_STORAGE = "app.storages.LocalStaticStorage"
 
 
 # files
 
-DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+DEFAULT_FILE_STORAGE = "app.storages.LocalFileStorage"

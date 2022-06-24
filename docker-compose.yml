@@ -19,15 +19,15 @@ services:
     - RDS_USERNAME=postgres
     - RDS_PASSWORD=password
     volumes:
-    - .:/code
+    - .:/app
     depends_on:
       db:
         condition: service_healthy
       mail:
         condition: service_healthy
     ports:
-    - "8000:8000"
-    command: ['python', './manage.py', 'runserver', '0.0.0.0:8000']
+    - "80:80"
+    command: ['python', './manage.py', 'runserver', '0.0.0.0:80']
 
   mail:
     image: accent/mailhog

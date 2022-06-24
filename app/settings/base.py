@@ -130,7 +130,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-STATICFILES_STORAGE = "app.storages.S3StaticStorage"
+STATICFILES_STORAGE = "app.storages.LocalStaticStorage"
 STATICFILES_LOCATION = "static"
 STATICFILES_DIRS = [
     join(BASE_DIR, "static"),
@@ -144,19 +144,17 @@ MEDIA_URL = "/media/"
 
 # File Storage
 
-DEFAULT_FILE_STORAGE = "app.storages.S3PublicStorage"
-FILE_UPLOAD_MAX_MEMORY_SIZE = (
-    5242880  # 5MB - Cloudflare limit on existing plan is 100MB
-)
+DEFAULT_FILE_STORAGE = "app.storages.S3Storage"
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
+
+
+# S3
 AWS_ACCESS_KEY_ID = environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = environ.get("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_REGION_NAME = environ.get("AWS_S3_REGION_NAME")
-AWS_S3_CUSTOM_DOMAIN = None  # Add for cloudfront etc
-AWS_S3_OBJECT_PARAMETERS = {
-    "CacheControl": "max-age=86400",
-}
-AWS_QUERYSTRING_AUTH = False
+AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+AWS_QUERYSTRING_AUTH = True
 AWS_QUERYSTRING_EXPIRE = 3600
 AWS_S3_FILE_OVERWRITE = False
 AWS_IS_GZIPPED = True

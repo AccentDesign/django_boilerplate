@@ -1,42 +1,30 @@
-FROM        python:3.10-slim
+FROM        accent/python-uwsgi-nginx:3.10
 
 # Build args
 ARG         PIPENV_INSTALL_OPTIONS=--deploy
 
-# Install dependencies
-RUN         set -ex \
-            && apt-get update \
-            && apt-get install -y \
-                gcc \
-                libjpeg62 \
-                libjpeg62-turbo-dev \
-                libpq-dev \
-            --no-install-recommends \
-            && rm -rf /var/lib/apt/lists/
+# Copy your application code to the container
+COPY         . /app/
 
 # Install pipenv and compilation dependencies
 RUN         pip install pipenv
 
-# Install python dependencies in /.venv
-COPY        Pipfile* /
+# Generate the Pipfile.lock during the image build process, then immediately remove the venv.
+# only needed if no Pipfile.lock exists
+# RUN         pipenv lock && pipenv --clear && pipenv --rm
+
+# Install python dependencies
 ARG         PIPENV_INSTALL_OPTIONS
-RUN         PIPENV_VENV_IN_PROJECT=1 pipenv install $PIPENV_INSTALL_OPTIONS
-
-# Set the path to the virtualenv
-ENV         PATH="/.venv/bin:$PATH"
-
-# Copy your application code to the container
-RUN         mkdir /code/
-WORKDIR     /code/
-ADD         . /code/
+RUN         pipenv install --system $PIPENV_INSTALL_OPTIONS
 
 # Add any custom, static environment variables needed by Django:
-ENV         PYTHONUNBUFFERED=1 \
+ENV         NGINX_CONTENT_ROOT=/app/public \
+            PYTHONUNBUFFERED=1 \
             PYTHONDONTWRITEBYTECODE=1 \
             DJANGO_SETTINGS_MODULE=app.settings \
             SECRET_KEY='***** change me *****' \
             ALLOWED_HOSTS=* \
-            CSRF_TRUSTED_ORIGINS=http://localhost:8000 \
+            CSRF_TRUSTED_ORIGINS=http://localhost \
             RDS_HOSTNAME=db \
             RDS_PORT=5432 \
             RDS_DB_NAME=postgres \
@@ -50,8 +38,3 @@ ENV         PYTHONUNBUFFERED=1 \
 # Docker entrypoint:
 ENV         DJANGO_MANAGEPY_MIGRATE=on \
             DJANGO_MANAGEPY_COLLECTSTATIC=on
-
-ENTRYPOINT  ["/code/docker-entrypoint.sh"]
-
-# Start uWSGI:
-CMD         ["uwsgi", "--ini", "uwsgi.ini"]
